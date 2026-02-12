@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --color-primary: #3B2A28;
+  --color-accent: #D96C4E;
+  --color-bg-primary: #F8F8F8;
+  --color-bg-secondary: #EFEDEB;
+  --color-text-primary: #2A2A2A;
+  --color-text-secondary: #6B6B6B;
+}
+
+html, body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: #F8F8F8;
+  overscroll-behavior-y: contain;
+}
+
+/* Ocultar scrollbar pero mantener funcionalidad */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optimizaciones de renderizado */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Safe areas para notch */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Mejorar rendimiento en animaciones */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* Optimal touch targets */
+@layer utilities {
+  .touch-target {
+    min-height: 3rem;
+    min-width: 3rem;
+  }
+  
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}

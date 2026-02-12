@@ -1,0 +1,448 @@
+================================================================================
+                    LA CAFETERIA - MENU DIGITAL INTERACTIVO
+                              Documentación de Funcionalidades
+================================================================================
+
+DESCRIPCION GENERAL:
+Aplicación web de menú digital interactivo para cafetería. Optimizada para 
+dispositivos móviles (responsive design). Permite a clientes ver productos,
+filtrar por categoría y ver detalles en modal expandido.
+
+URL: https://cafeteria.onrender.com
+GitHub: https://github.com/juxnmorxn/menu-cafeteria
+
+================================================================================
+PANTALLAS Y VISTAS
+================================================================================
+
+1. PANTALLA PRINCIPAL (HOME / MENU)
+   Ubicación: /
+   Descripción: Vista principal que muestra todos los productos en grid
+   
+   Elementos:
+   - Header con logo y título "La Cafeteria"
+   - Navegación pegajosa con categorías
+   - Grid de productos (2 columnas móvil, 3 tablet, 4 desktop)
+   - Cada tarjeta de producto es clickeable
+
+   Responsive:
+   - Mobile: 2 columnas, padding 12px
+   - Tablet (sm): 3 columnas, padding 16px
+   - Desktop (lg): 4 columnas, padding 16-24px
+
+2. MODAL DE DETALLES DE PRODUCTO
+   Aparece: Al hacer click en cualquier producto
+   Comportamiento: 
+   - Móvil: Pantalla completa, abre desde abajo
+   - Desktop: Centrado en pantalla
+   - Se puede cerrar: Click X, click en fondo, ESC
+   
+   Contenido:
+   - Imagen grande del producto
+   - Nombre completo
+   - Descripción detallada
+   - Precio destacado
+   - Botón "Ver" (o acciones futuras)
+
+================================================================================
+FUNCIONALIDADES DETALLADAS
+================================================================================
+
+1. NAVEGACION POR CATEGORIAS
+   - 6 categorías: Todos, Café, Frappés, Postres, Bebidas, Alimentos
+   - Botones con icono + nombre
+   - Estado activo (fondo café #3B2A28, texto blanco)
+   - Scroll horizontal en móvil
+   - Click activa filtro inmediato
+   - Animación de transición suave
+
+2. FILTRADO DE PRODUCTOS
+   - Al seleccionar categoría, muestra solo productos de esa categoría
+   - "Todos" muestra los 12 productos disponibles
+   - Transición animada (entrada con fade in)
+   - Cada producto tiene categoría asignada
+
+3. VISTA DE PRODUCTOS (GRID)
+   Tarjeta de producto contiene:
+   - Imagen cuadrada del producto (placeholder Unsplash)
+   - Nombre en 2 líneas máximo (completo)
+   - Precio en color terracota (#D96C4E)
+   - Botón "Ver" interactivo
+   
+   Interactividad:
+   - Hover: sombra aumenta, icono se amplía
+   - Tap/Click: abre modal con detalles
+   - Animación de entrada (fade-in escalonado)
+
+4. MODAL DE DETALLES
+   Funcionalidad:
+   - Abre al clickear tarjeta de producto
+   - Muestra información completa:
+     * Imagen grande (aspect ratio diferente móvil/desktop)
+     * Nombre del producto
+     * Descripción completa
+     * Precio destacado
+   
+   Cerrar modal:
+   - Botón X en esquina superior derecha
+   - Click en el fondo oscuro
+   - Tecla ESC
+
+5. ANIMACIONES (Framer Motion)
+   - Entrada de grid: fade-in escalonado 50ms entre items
+   - Hover en productos: escala 1.05
+   - Tap en productos: escala 0.95
+   - Botón "Ver": escala 1.05 hover, 0.95 tap
+   - Modal: apertura suave con transición
+   - Categoría activa: morfing background animado
+
+6. DISEÑO RESPONSIVO
+   Breakpoints:
+   - Mobile (< 640px): 
+     * 2 columnas de productos
+     * Padding horizontal 12px
+     * Fuentes pequeñas (text-xs a text-sm)
+     * iconos 16px
+   
+   - Tablet (640px - 1024px):
+     * 3 columnas de productos
+     * Padding horizontal 16px
+     * Fuentes medianas (text-sm a text-base)
+     * Icono 18px
+   
+   - Desktop (> 1024px):
+     * 4 columnas de productos
+     * Padding horizontal 16-24px
+     * Fuentes grandes
+     * Modal centrado
+     * Gap entre items 24px
+
+7. HEADER PEGAJOSO
+   - Se posiciona en top con z-index alto
+   - Altura: sm:64px en móvil, sm:64px en tablet/desktop
+   - Fondo blanco con backdrop blur
+   - Icono café + título "La Cafeteria"
+   - Subtitle "Menú Digital"
+   - Efecto sombra sutil
+
+8. NAVEGACION PEGAJOSA DE CATEGORIAS
+   - Se posiciona debajo del header
+   - Sticky con scroll horizontal
+   - Oculta scrollbar visual
+   - Fondo blanco con transparencia + blur
+   - Borde inferior sutil (#EFEDEB)
+
+================================================================================
+PRODUCTOS Y DATOS
+================================================================================
+
+TOTAL: 12 productos distribuidos en 6 categorías
+
+CAFÉ (3 productos):
+1. Café Latte - $55 - Espresso suave con leche vaporizada
+2. Cappuccino - $55 - Equilibrio perfecto de café, leche y espuma
+3. Americano - $50 - Espresso suavizado con agua caliente
+
+FRAPPÉS (2 productos):
+4. Frappé de Caramelo - $70 - Café helado con caramelo y crema
+5. Frappé de Chocolate - $70 - Bebida helada de chocolate con crema
+
+POSTRES (3 productos):
+6. Pastel de Zanahoria - $60 - Suave bizcocho con especias y queso crema
+7. Brownie de Chocolate - $55 - Intenso chocolate con nueces
+8. Croissant de Almendras - $50 - Hojaldrado relleno de crema
+
+BEBIDAS (2 productos):
+9. Smoothie de Fresa - $60 - Natural, fresco y cremoso
+10. Té Chai Helado - $50 - Especiado y refrescante
+
+ALIMENTOS (3 productos):
+11. Sándwich Club - $85 - Pollo, tocino, aguacate y vegetales frescos
+12. Panini Caprese - $75 - Mozzarella, tomate, albahaca y pesto
+13. Ensalada César - $80 - Lechuga romana, crutones y pollo a la parrilla
+
+Cada producto contiene:
+- ID único
+- Nombre completo
+- Descripción detallada
+- Precio (número)
+- URL de imagen (placeholder Unsplash)
+- Categoría asignada
+
+================================================================================
+PALETA DE COLORES (DISEÑO SYSTEM)
+================================================================================
+
+Primarios:
+- Café profundo: #3B2A28 (titles, nav, active states)
+- Terracota moderno: #D96C4E (prices, buttons, accents)
+
+Fondos:
+- Blanco suave: #F8F8F8 (background principal)
+- Beige sutil: #EFEDEB (separadores, bloques secundarios)
+
+Texto:
+- Primario: #2A2A2A (headings, body text)
+- Secundario: #6B6B6B (descriptions, subtexts)
+- Deshabilitado: #A3A3A3 (disabled states)
+
+Sombras:
+- Sutil: 0_10px_30px_rgba(0,0,0,0.05)
+- Media: 0_20px_40px_rgba(0,0,0,0.08)
+- Hover: 0_20px_60px_rgba(0,0,0,0.15)
+
+================================================================================
+COMPONENTES TECNICOS
+================================================================================
+
+ESTRUCTURA DE CARPETAS:
+src/
+├── app/
+│   ├── page.tsx (componente principal con lógica)
+│   ├── layout.tsx (HTML root, metadata, fuentes)
+│   └── globals.css (estilos globales, variables CSS)
+├── components/
+│   ├── Header.tsx (header con logo)
+│   ├── CategoryNav.tsx (navegación de categorías)
+│   ├── ProductCard.tsx (tarjeta de producto)
+│   └── ProductModal.tsx (modal de detalles)
+├── data/
+│   └── menu.ts (productos, categorías - datos estáticos)
+└── lib/
+    └── utils.ts (funciones helper, cn() para Tailwind)
+
+COMPONENTES PRINCIPALES:
+
+1. Header (Header.tsx)
+   Props: ninguno
+   Estado: ninguno
+   Renderiza: Logo + título "La Cafeteria"
+   Dependencias: Framer Motion, Lucide React (Coffee icon)
+
+2. CategoryNav (CategoryNav.tsx)
+   Props: categories[], activeCategory, onCategoryChange()
+   Estado: manejado por parent (page.tsx)
+   Funcionalidad: Renderiza pills de categorías, maneja clicks
+   Animaciones: Morphing background activo, escala en hover/tap
+
+3. ProductCard (ProductCard.tsx)
+   Props: product{}, index, onClick()
+   Estado: ninguno
+   Renderiza: Imagen, nombre (2 líneas), precio, botón "Ver"
+   Interactividad: Click abre modal, hover con animaciones
+
+4. ProductModal (ProductModal.tsx)
+   Props: isOpen, selectedProduct, onClose
+   Estado: manejado por parent
+   Renderiza: Modal fullscreen/centrado con detalles producto
+   Interactividad: Click X, click fondo, ESC cierra
+
+5. page.tsx (Main component)
+   Props: ninguno
+   Estado:
+   - activeCategory: string (categoría seleccionada)
+   - selectedProduct: Product | null (producto en modal)
+   - isModalOpen: boolean (modal visible/hidden)
+   
+   Funcionalidad:
+   - Filtra productos por categoría (useMemo)
+   - Maneja state de modal
+   - Renderiza Header, CategoryNav, grid de ProductCards, Modal
+   - Responsive layout con Tailwind
+
+================================================================================
+FLUJO DE USUARIO
+================================================================================
+
+1. Usuario entra a /
+2. Ve header pegajoso + categorías + grid de 12 productos
+3. Por defecto muestra "Todos" (todos los productos)
+4. Usuario puede:
+   a) Hacer click en categoría → filtra productos
+   b) Hacer click en producto → abre modal fullscreen
+   c) En modal: ver detalles completos
+   d) Cerrar modal: click X, fondo, ESC
+5. Vuelve al grid filtrado
+
+================================================================================
+TECNOLOGIAS Y DEPENDENCIAS
+================================================================================
+
+Framework:
+- Next.js 16.1.6 (App Router, TypeScript)
+- React 19.2.3 (client components)
+- Node.js 22.22.0 (runtime servidor)
+
+UI/Styling:
+- Tailwind CSS 4 (utility-first CSS framework)
+- PostCSS 4 (CSS processing)
+- Inter Font (Google Fonts)
+
+Animaciones:
+- Framer Motion 12.34.0 (motion components)
+
+Iconografía:
+- Lucide React 0.563.0 (SVG icons)
+
+Utilidades:
+- clsx (className utilities)
+- tailwind-merge (merge Tailwind classes)
+
+Build & Deploy:
+- Render.com (hosting PaaS)
+- GitHub (source control)
+- Custom server.js (Node HTTP server, puerto handling)
+
+================================================================================
+CARACTERISTICAS ESPECIALES
+================================================================================
+
+1. MOBILE-FIRST DESIGN
+   - Optimizado primero para móvil
+   - Escalable a tablet y desktop
+   - Touch targets mínimo 48x48px
+   - Safe area support (notch, home button)
+
+2. RESPONSIVE IMAGES
+   - Lazy loading automático
+   - Optimización de tamaño por breakpoint
+   - Placeholder Unsplash con aspect-square
+
+3. PERFORMANCE
+   - Static generation (SSG)
+   - Image optimization (Next.js)
+   - Lazy loading componentes
+   - CSS-in-JS minimal (Tailwind)
+
+4. ACCESIBILIDAD
+   - Semantic HTML
+   - Touch targets accesibles
+   - Transiciones suaves
+   - Color contrast (WCAG AA)
+
+5. SEO FRIENDLY
+   - Metadata configurado
+   - Viewport mobile-optimizado
+   - Title y description
+
+================================================================================
+FLUJO DE DATOS
+================================================================================
+
+Datos → menu.ts (estático)
+   ↓
+page.tsx (importa productos, gestiona estado)
+   ↓
+filtra por categoría (useMemo)
+   ↓
+renderiza CategoryNav + Product Grid + Modal
+   ↓
+onChange categoría o onClick producto → actualiza state
+   ↓
+re-render con datos filtrados/modal
+
+Actualmente: HARDCODED en menu.ts
+Futuro: Fetch desde Firebase/API externa
+
+================================================================================
+DETALLES DE DESPLIEGUE
+================================================================================
+
+RENDER.COM CONFIGURATION:
+- Build: npm install && npm run build
+- Start: node server.js (custom server)
+- PORT: 3000 (validado en server.js)
+- NODE_ENV: production
+
+GITHUB:
+- Repo: https://github.com/juxnmorxn/menu-cafeteria.git
+- Username: juxnmorxn
+- Branch: main
+- Auto-deploy: Pull → Render redeploy
+
+LOCAL DEVELOPMENT:
+npm run dev
+→ http://localhost:3000
+
+PRODUCTION BUILD:
+npm run build
+npm run start
+→ http://localhost:3000
+
+================================================================================
+FUNCIONALIDADES FUTURAS (Roadmap)
+================================================================================
+
+FASE 2 - CRUD ADMIN:
+- Firebase/Supabase integration
+- Panel admin con login
+- Agregar/editar/eliminar productos
+- Gestor de imágenes
+- Control de disponibilidad
+
+FASE 3 - PROMOS Y DESCUENTOS:
+- Sistema de promociones
+- Descuentos por producto
+- Banner de promos en header
+- Badge de "EN OFERTA"
+
+FASE 4 - CARRITO Y PEDIDOS:
+- Carrito de compras
+- Sistema de pedidos
+- WhatsApp integration
+- Confirmación de pedido
+
+FASE 5 - ANALISIS:
+- Dashboard de estadísticas
+- Contador de vizualizaciones
+- Productos más vistos
+- Reportes de ventas
+
+================================================================================
+NOTAS IMPORTANTES
+================================================================================
+
+1. Los productos están HARDCODEADOS en menu.ts
+   → Cambiar requiere editar código y redeploy
+
+2. Las imágenes usan placeholders de Unsplash
+   → Cambiar solo URLs en menu.ts
+
+3. Precios fijos en código
+   → Futuro: mover a database
+
+4. Sin autenticación actualmente
+   → Todos ven todo (ideal para público)
+
+5. Sin carrito ni checkout
+   → Es solo menú de visualización
+
+6. Sin base de datos
+   → Datos en arraya estática
+
+7. Puerto validado en server.js
+   → Soporta cualquier puerto asignado por Render
+
+================================================================================
+SOPORTE Y MANTENIMIENTO
+================================================================================
+
+Para cambiar:
+- Productos: Editar src/data/menu.ts
+- Colores: Editar inline classes o globals.css
+- Categorías: Editar categories array en menu.ts
+- Precios: Editar price field en products array
+
+Para deploy:
+git add .
+git commit -m "mensaje"
+git push
+→ Ir a Render dashboard y hacer Redeploy
+
+Para contacto:
+GitHub: @juxnmorxn
+Email: [contacto del propietario]
+
+================================================================================
+                              FIN DOCUMENTACION
+================================================================================
