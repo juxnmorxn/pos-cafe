@@ -3,8 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Si intenta acceder a /admin sin cookie de sesión, redirige a login
-  if (pathname.startsWith("/admin") || pathname.startsWith("/pos")) {
+  // SOLO proteger rutas muy específicas de ADMIN
+  if (pathname === "/admin/users" || pathname === "/admin/dashboard") {
     const session = request.cookies.get("auth-session");
 
     if (!session) {
@@ -15,11 +15,10 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configura en qué rutas corre el middleware
+// Configura EXACTAMENTE qué rutas corre el middleware
 export const config = {
   matcher: [
-    "/admin/:path*",
-    "/pos/:path*",
-    "/dashboard/:path*",
+    "/admin/users",
+    "/admin/dashboard",
   ],
 };
